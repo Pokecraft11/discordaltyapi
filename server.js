@@ -57,7 +57,7 @@ client.on('message', async msg => {
 	const serverQueue = queue.get(msg.guild.id);
 	let command = msg.content.toLowerCase().split(' ')[0];
 
-	if (command === 'çal') {
+	if (command === '!çal') {
 		const voiceChannel = msg.member.voiceChannel;
 		if (!voiceChannel) return msg.channel.sendEmbed(new Discord.RichEmbed()
       .setColor('RANDOM')
@@ -122,13 +122,13 @@ client.on('message', async msg => {
 			return handleVideo(video, msg, voiceChannel);
       
 		}
-	} else if (command === 'gir') {
+	} else if (command === '!gir') {
 		return new Promise((resolve, reject) => {
 			const voiceChannel = msg.member.voiceChannel;
 			if (!voiceChannel || voiceChannel.type !== 'voice') return msg.reply('Kanalda Kimse Olmadığından Çıkıyorum!');
 			voiceChannel.join().then(connection => resolve(connection)).catch(err => reject(err));
 		});
-	} else if (command === 'geç') {
+	} else if (command === '!geç') {
 		if (!msg.member.voiceChannel) if (!msg.member.voiceChannel) return msg.channel.sendEmbed(new Discord.RichEmbed()
     .setColor('RANDOM')
     .setDescription('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
@@ -137,7 +137,7 @@ client.on('message', async msg => {
      .setTitle('❎ **Şu An Zaten Şarkı Çalmıyorum!'));                                              
 		serverQueue.connection.dispatcher.end('**Sıradaki Şarkıya Geçildi!**');
 		return undefined;
-	} else if (command === 'durdur') {
+	} else if (command === '!durdur') {
 		if (!msg.member.voiceChannel) if (!msg.member.voiceChannel) return msg.channel.sendEmbed(new Discord.RichEmbed()
     .setColor('RANDOM')
     .setDescription('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
@@ -148,7 +148,7 @@ client.on('message', async msg => {
 		serverQueue.songs = [];
 		serverQueue.connection.dispatcher.end('**Şarkı Bitti**');
 		return undefined;
-	} else if (command === 'ses') {
+	} else if (command === '!ses') {
 		if (!msg.member.voiceChannel) if (!msg.member.voiceChannel) return msg.channel.sendEmbed(new Discord.RichEmbed()
     .setColor('RANDOM')
     .setDescription('❎ | Lütfen Seli Bir Kanala Giriş Yapınız!'));
@@ -163,7 +163,7 @@ client.on('message', async msg => {
 		return msg.channel.sendEmbed(new Discord.RichEmbed()
     .setTitle(`:loud_sound: Ses Seviyesi Ayarlanıyor: **${args[1]}**`)
     .setColor('RANDOM'));                             
-	} else if (command === 'çalan') {
+	} else if (command === '!çalan') {
 		if (!serverQueue) return msg.channel.sendEmbed(new Discord.RichEmbed()
     .setTitle("❎ | Şu An Şarkı Çalınmıyor!")
     .setColor('RANDOM'));
@@ -352,9 +352,9 @@ client.unload = command => {
 client.on('message', msg => {
   if (msg.content.toLowerCase() === 'sa') {
 		if (!msg.guild.member(msg.author).hasPermission("BAN_MEMBERS")) {
-			msg.author.sendMessage('**Aleyküm Selam,  Hoş Geldin!**'); 
+			msg.author.sendMessage('**Aleyküm Selam, Tayfaya Hoş Geldin!**'); 
 		} else {
-		msg.reply('Aleyküm selam, hoş geldin ^^');
+		msg.reply('Aleyküm selam,Tayfaya hoş geldin ^^');
 		}
 	}
 });
@@ -362,9 +362,9 @@ client.on('message', msg => {
 client.on('message', msg => {
   if (msg.content.toLowerCase() === 'selam') {
 		if (!msg.guild.member(msg.author).hasPermission("BAN_MEMBERS")) {
-			msg.author.sendMessage('**Aleyküm Selam,  Hoş Geldin!**'); 
+			msg.author.sendMessage('**Aleyküm Selam, Tayfaya Hoş Geldin!**'); 
 		} else {
-		msg.reply('Aleyküm selam, hoş geldin ^^');
+		msg.reply('**Aleyküm Selam, Tayfaya Hoş Geldin!**');
 		}
 	}
 });
@@ -372,9 +372,9 @@ client.on('message', msg => {
 client.on('message', msg => {
   if (msg.content.toLowerCase() === 'sea') {
 		if (!msg.guild.member(msg.author).hasPermission("BAN_MEMBERS")) {
-			msg.author.sendMessage('**Aleyküm Selam,  Hoş Geldin!**'); 
+			msg.author.sendMessage('**Aleyküm Selam, Tayfaya Hoş Geldin!**'); 
 		} else {
-		msg.reply('Aleyküm selam, hoş geldin ^^');
+		msg.reply('**Aleyküm Selam, Tayfaya Hoş Geldin!**');
 		}
 	}
 });
@@ -382,9 +382,9 @@ client.on('message', msg => {
 client.on('message', msg => {
   if (msg.content.toLowerCase() === 'selamun aleyküm') {
 		if (!msg.guild.member(msg.author).hasPermission("BAN_MEMBERS")) {
-			msg.author.sendMessage('**Aleyküm Selam,  Hoş Geldin!**'); 
+			msg.author.sendMessage('**Aleyküm Selam, Tayfaya Hoş Geldin!**'); 
 		} else {
-		msg.reply('Aleyküm selam, hoş geldin ^^');
+		msg.reply('**Aleyküm Selam, Tayfaya Hoş Geldin!**');
 		}
 	}
 });
@@ -394,7 +394,7 @@ client.on('message', msg => {
 client.on('guildMemberAdd', member => {
   let guild = member.guild;
 
-  const channel = member.guild.channels.find('name', 'giriş-çıkış');
+  const channel = member.guild.channels.find('name', 'gelen-giden');
   if (!channel) return;
   const embed = new Discord.RichEmbed()
   .setColor('RANDOM')
